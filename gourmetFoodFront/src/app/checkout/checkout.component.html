@@ -1,0 +1,12 @@
+<div>
+    
+        Table Number: {{order.tableNumber}} <br>
+        <div *ngFor="let item of order.itemsOrdered">
+             Item Name: {{item.itemName}} <br>
+             Item Price: {{item.price}}
+        </div>
+        Total: ${{order.totalPrice}} <br>
+
+        <button class="btn btn-primary" (click)="payed()">Pay Now</button>
+   
+</div>

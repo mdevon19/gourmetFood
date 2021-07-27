@@ -1,0 +1,32 @@
+<div *ngIf="popup">
+    <h2>Items To Order:</h2><br><br>
+    <div *ngFor="let citem of itemCart">
+        <p>
+            {{citem.itemName}} <br>
+            {{citem.price}} <button (click)=removeItem(citem)>Remove</button>
+        </p>
+
+    </div>
+</div>
+
+<div>
+    <button (click)="popup = true">View Cart</button>
+    <p><br><br></p>
+</div>
+<div *ngFor="let item of FoodArray">
+
+    <p>
+      {{item.itemName}} <br>
+      {{item.category}} <br>
+      {{item.itemDescription}} <br>
+      {{item.price}} <br>
+      <button (click)="addItem(item)">Add</button> <br>
+    </p>
+    
+
+</div>
+<button (click)="orderNow()" [disabled]="!cartHasItems">Order Now</button>
+
+
+   
+

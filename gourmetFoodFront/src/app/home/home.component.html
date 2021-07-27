@@ -1,10 +1,9 @@
 <div style="margin-top: 14%; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size:500%; text-align: center;">
-
     Welcome to Gourmet Food!
 
     <div style="margin-top: 100px;">
-        <button style="margin: 10px; color: white; background-color: black">Order Now</button>
-        <button style="margin: 10px; color: white; background-color: black" disabled>Place Order</button>
+        <button (click)="goToOrder()" style="margin: 10px; color: white; background-color: black" [disabled]="submittedOrder">Place Order</button>
+        <button (click)="goToCheckOut()" style="margin: 10px; color: white; background-color: black" [disabled]="!submittedOrder">Checkout</button>
     </div>
 
   </div>
