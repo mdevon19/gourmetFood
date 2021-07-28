@@ -1,31 +1,48 @@
-<div *ngIf="popup">
-    <h2>Items To Order:</h2><br><br>
+<div *ngIf="popup" style="text-align: center;">
+    <h1>Items To Order:</h1><br>
     <div *ngFor="let citem of itemCart">
-        <p>
-            {{citem.itemName}} <br>
-            {{citem.price}} <button (click)=removeItem(citem)>Remove</button>
+        <p style="font-size: 20px;">
+            <b>{{citem.itemName}}</b> <br>
+            ${{citem.price}} 
+            <button class="btn btn-danger" (click)=removeItem(citem)>Remove</button>
         </p>
 
     </div>
 </div>
 
-<div>
-    <button (click)="popup = true">View Cart</button>
-    <p><br><br></p>
+<div *ngIf="popup" style="text-align: center;">
+    <button class="btn btn-primary" (click)="popup = false">Close Cart</button>
 </div>
-<div *ngFor="let item of FoodArray">
 
-    <p>
-      {{item.itemName}} <br>
-      {{item.category}} <br>
-      {{item.itemDescription}} <br>
-      {{item.price}} <br>
-      <button (click)="addItem(item)">Add</button> <br>
-    </p>
+<div style="text-align: center; margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr;" >
+
+    <div style="border: 2px solid black;  margin-top: 10px; margin-left: 5px; margin-right: 5px;" *ngFor="let item of FoodArray" >
+
+        <p style="font-size: 20px; margin-top: 50px;">
+          <b style="font-size: 50px; margin-bottom: 5px;">{{item.itemName}}</b> <br>
+          Category: {{item.category}} <br>
+          <a data-toggle="tooltip" data-placement="top" title={{item.itemDescription}} style="color: cadetblue; margin-bottom: 10px;"> <u>Description</u></a> <br>
+          ${{item.price}} <br>
+          <button class="btn btn-primary" style="font-size: 18px; margin: 5px; margin-bottom: 30px;" (click)="addItem(item)">Add</button> <br>
+        </p>
+        
     
+    </div>
+</div >
 
-</div>
-<button (click)="orderNow()" [disabled]="!cartHasItems">Order Now</button>
+<div  style="text-align: center;">
+
+
+    <div style="margin-top: 100px;">
+        <div *ngIf="!popup">
+            <button class="btn btn-primary" (click)="popup = true; viewCart()" >View Cart</button>
+        </div>
+        <button style="margin: 30px;" class="btn btn-primary" (click)="orderNow()" >Order Now</button>
+    </div>
+
+  </div>
+
+
 
 
    

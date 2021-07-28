@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   submittedOrder: boolean;
 
   ngOnInit(): void {
+    window.scroll(0,0)
     this.CheckBoolValue();
   }
 

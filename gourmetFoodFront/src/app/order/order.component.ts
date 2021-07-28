@@ -14,9 +14,7 @@ import { OrderServiceService } from './order-service.service';
 })
 export class OrderComponent implements OnInit {
 
-
-  constructor(private OrderService: OrderServiceService, private router: Router, private booleanService: BooleanServiceService) { }
-
+  message: string;
   response: string;
   orderTotal: number = 0;
   order: Order = new Order;
@@ -24,6 +22,10 @@ export class OrderComponent implements OnInit {
   popup: boolean = false
   itemCart: FoodItem[] = [];
   FoodArray: FoodItem[];
+
+  constructor(private OrderService: OrderServiceService, private router: Router, private booleanService: BooleanServiceService) { }
+
+  
 
   ngOnInit(): void {
     this.getAllFood();
@@ -58,13 +60,23 @@ export class OrderComponent implements OnInit {
     });
     this.order.totalPrice = this.orderTotal;
     this.order.itemsOrdered = this.itemCart;
+
+    
+
     this.OrderService.postOrder(this.order)
+          .subscribe(message => this.message = message);
+
+    console.log(this.message)
 
     alert("Order is successfully placed")
 
     localStorage.setItem("order", JSON.stringify(this.order));
     localStorage.setItem("orderSubmitted", "true");
     this.router.navigateByUrl('home');
+  }
+
+  viewCart(){
+    window.scroll(0,0);
   }
 
 

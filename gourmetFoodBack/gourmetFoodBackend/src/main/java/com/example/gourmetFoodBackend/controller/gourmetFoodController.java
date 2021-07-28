@@ -1,17 +1,23 @@
 package com.example.gourmetFoodBackend.controller;
 
 import com.example.gourmetFoodBackend.dto.OrderDTO;
+import com.example.gourmetFoodBackend.entity.Order;
 import com.example.gourmetFoodBackend.service.FoodItemService;
 import com.example.gourmetFoodBackend.service.OrderService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 @RestController
 @RequestMapping(path = "/GourmetFood")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 public class gourmetFoodController {
 
 
@@ -29,7 +35,13 @@ public class gourmetFoodController {
 
     @CrossOrigin
     @PostMapping(path= "/addOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addOrder(@RequestBody OrderDTO orderDTO) {
-        orderService.addOrder(orderDTO);
+    public ResponseEntity addOrder(@RequestBody Order order) {
+        orderService.addOrder(order);
+        return new ResponseEntity("We all good", HttpStatus.OK);
+    }
+
+    @GetMapping(path = "getTableOrder", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getAllOrders() {
+        return new ResponseEntity(orderService.getAllOrders(), HttpStatus.OK);
     }
 }

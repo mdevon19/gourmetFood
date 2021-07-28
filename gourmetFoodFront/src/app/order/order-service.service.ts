@@ -12,13 +12,15 @@ export class OrderServiceService {
   constructor(private http: HttpClient) { }
 
   getFoodURL: string = 'http://localhost:8080/GourmetFood/all';
-  postOrderURL: string = 'http://localhost:8080/GourmetFood/addOrder'
+
+  postURL: string = 'http://localhost:8080/GourmetFood/addOrder';
+
 
   public getData(){
     return this.http.get<FoodItem []>(this.getFoodURL);
   }
 
-  public postOrder(order: Order) {
-    this.http.post<Order>(this.postOrderURL, order);
+  postOrder(data: any): Observable<any> {
+    return this.http.post<any>(this.postURL, data);
   }
 }
