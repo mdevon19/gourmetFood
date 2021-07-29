@@ -1,7 +1,6 @@
 package com.example.gourmetFoodBackend.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "orderTable")
@@ -14,9 +13,9 @@ public class Order {
     @Column(name = "totalPrice")
     double totalPrice;
 
-    @Column(name = "foodItems")
+    @Column(name = "itemsOrdered")
     @OneToMany
-    List<FoodItem> foodItems;
+    List<FoodItem> itemsOrdered;
 
     public int getTableNumber() {
         return tableNumber;
@@ -34,11 +33,20 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public List<FoodItem> getFoodItems() {
-        return foodItems;
+    public List<FoodItem> getItemsOrdered() {
+        return itemsOrdered;
     }
 
-    public void setFoodItems(List<FoodItem> foodItems) {
-        this.foodItems = foodItems;
+    public void setItemsOrdered(List<FoodItem> itemsOrdered) {
+        this.itemsOrdered = itemsOrdered;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "tableNumber=" + tableNumber +
+                ", totalPrice=" + totalPrice +
+                ", foodItems=" + itemsOrdered.toString() +
+                '}';
     }
 }

@@ -39,7 +39,7 @@ public class OrderDTO {
         Order order = new Order();
         order.setTableNumber(order.getTableNumber());
         order.setTotalPrice(orderDTO.getTotalPrice());
-        order.setFoodItems(orderDTO.getFoodItems());
+        order.setItemsOrdered(orderDTO.getFoodItems());
         return order;
     }
 }
