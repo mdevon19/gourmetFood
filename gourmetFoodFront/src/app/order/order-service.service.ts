@@ -21,6 +21,7 @@ export class OrderServiceService {
   }
 
   postOrder(data: any): Observable<any> {
+    console.log(data)
     return this.http.post<any>(this.postURL, data);
   }
 }

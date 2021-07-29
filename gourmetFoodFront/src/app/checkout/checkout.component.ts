@@ -12,6 +12,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  tip: number;
+
   order: Order;
 
   ngOnInit(): void {

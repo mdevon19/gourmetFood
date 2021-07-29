@@ -9,13 +9,15 @@ import { OrderComponent } from './order/order.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     OrderComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PageNotFoundComponent
     
   ],
   imports: [

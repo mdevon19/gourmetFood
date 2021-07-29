@@ -4,12 +4,14 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 import {HomeComponent} from './home/home.component';
 import { OrderComponent } from './order/order.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'order', component: OrderComponent},
   { path: 'checkout', component: CheckoutComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
