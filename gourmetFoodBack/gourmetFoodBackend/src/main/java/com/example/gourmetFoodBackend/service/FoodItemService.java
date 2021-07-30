@@ -2,9 +2,7 @@ package com.example.gourmetFoodBackend.service;
 
 
 import com.example.gourmetFoodBackend.entity.FoodItem;
-import com.example.gourmetFoodBackend.entity.Order;
 import com.example.gourmetFoodBackend.repository.FoodItemRepository;
-import com.example.gourmetFoodBackend.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
