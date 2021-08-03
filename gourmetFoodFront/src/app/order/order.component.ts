@@ -54,19 +54,19 @@ export class OrderComponent implements OnInit {
   }
 
   orderNow(){
-    this.order.tableNumber = Math.floor(Math.random() * 20) + 1;
+    this.order.tableNumber = Math.floor(Math.random() * 200) + 1;
     this.itemCart.forEach((value, index) => {
       this.orderTotal = this.orderTotal + value.price;
     });
     this.order.totalPrice = this.orderTotal;
     this.order.itemsOrdered = this.itemCart;
-
+    this.order.timePlaced = new Date();
     
 
     this.OrderService.postOrder(this.order)
           .subscribe(message => this.message = message);
 
-    console.log(this.message)
+    console.log(this.order);
 
     alert("Order is successfully placed")
 
