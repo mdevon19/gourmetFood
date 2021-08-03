@@ -1,6 +1,8 @@
 package com.example.gourmetFoodBackend.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity(name = "orderTable")
@@ -13,6 +15,9 @@ public class Order {
     @Column(name = "totalPrice")
     double totalPrice;
 
+    @Column(name = "timePlaced")
+    LocalDateTime timePlaced;
+
     @Column(name = "itemsOrdered")
     @OneToMany
     List<FoodItem> itemsOrdered;
@@ -23,6 +28,14 @@ public class Order {
 
     public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
+    }
+
+    public LocalDateTime getTimePlaced() {
+        return timePlaced;
+    }
+
+    public void setTimePlaced(LocalDateTime timePlaced) {
+        this.timePlaced = timePlaced;
     }
 
     public double getTotalPrice() {

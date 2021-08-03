@@ -16,7 +16,7 @@ export class OrderServiceService {
   postURL: string = 'http://localhost:8080/GourmetFood/addOrder';
 
 
-  public getData(){
+  public getData(): Observable<any>{
     return this.http.get<FoodItem []>(this.getFoodURL);
   }
 

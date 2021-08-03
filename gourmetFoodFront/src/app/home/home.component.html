@@ -20,6 +20,34 @@
             <button [ngStyle]="{'background-color': submittedOrder? 'black' : 'grey', 'border-color': submittedOrder? 'black' : 'grey'}" [disabled]="!submittedOrder" (click)="goToCheckOut()" class="btn-primary" style="border-radius: 1rem; width: 450px; height: 120px; font-size: 45px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Checkout</button>
         </div>
     </div>
+    <div class="row"><p></p></div>
+    <div class="row"><p></p></div>
+    <div class="row"><p></p></div>
+    <div class="row"><p></p></div>
+    <div class="row">
+        <h1>
+            Want to check on your order? Please enter your order number below. 
+        </h1>
+    </div>
+    <div class="row">
+        <form [formGroup]="tableNumberForm" (ngSubmit) = "onSubmit()" >
+            <input type="number" step="1" formControlName="userTableNumber">
+        </form>
+        
+
+    </div>
+    <div class="row"><p></p></div>
+    <div class="row"><p></p></div>
+    <div class="row"><p></p></div>
+    <div class="row" *ngIf="orderCheck">
+        <div class="col">
+            {{timeElapsed}}
+            {{orderCheck.timePlaced | date:'shortTime':'EST'}}
+        </div>
+    
+    </div>
 </div>
+
+
 
  

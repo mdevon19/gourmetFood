@@ -1,6 +1,11 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BooleanServiceService } from '../boolean-service.service';
+import { GetOrderDetailsServiceService } from '../get-order-details-service.service';
+import { Order } from '../shared/Order';
+import { OrderCheck } from '../shared/OrderCheck';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +14,15 @@ import { BooleanServiceService } from '../boolean-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private booleanService: BooleanServiceService) { }
+  constructor(private router: Router, private booleanService: BooleanServiceService, private getOrderDetailService: GetOrderDetailsServiceService) { }
+
+  tableNumberForm = new FormGroup({
+    userTableNumber: new FormControl('')
+  })
+
+  orderCheck: Order;
+  timeOrderCheck: Date;
+  timeElapsed;
 
 
   submittedOrder: boolean;
@@ -34,6 +47,20 @@ export class HomeComponent implements OnInit {
     } else {
       this.submittedOrder = false;
     }
+  }
+
+  onSubmit(){
+    this.getOrderDetailService.getOrderDetails(this.tableNumberForm.value.userTableNumber).subscribe(orderCheck => {this.orderCheck = orderCheck})
+    
+    this.timeElapsed = this.calculateDiff(this.orderCheck.timePlaced);
+  }
+
+  calculateDiff(data){
+    let date = new Date(data.sent);
+    let currentDate = new Date();
+
+    let days = Math.floor((currentDate.getTime() - date.getTime()));
+    return days;
   }
 
   

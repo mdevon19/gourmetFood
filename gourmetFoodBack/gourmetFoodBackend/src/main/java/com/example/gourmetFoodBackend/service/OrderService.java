@@ -20,4 +20,8 @@ public class OrderService {
     public List<Order> getAllOrders(){
         return orderRepository.findAll();
     }
+
+    public Order getOrderByTableNumber(int tableNumber){
+        return orderRepository.findByTableNumber(tableNumber);
+    }
 }
