@@ -1,3 +1,4 @@
+<button (click)="goToWaiter()">Waiter View</button>
 <div class="card" style="margin-top: 6%;">
     <div class="row">
         <h1 style="font-size: 50px; text-align: center; margin-top: 6%; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">
@@ -37,12 +38,12 @@
 
     </div>
     <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
-    <div class="row"><p></p></div>
     <div class="row" *ngIf="orderCheck">
         <div class="col">
-            {{timeElapsed}}
-            {{orderCheck.timePlaced | date:'shortTime':'EST'}}
+            Time Ordered: {{orderCheck.timePlaced | date:'shortTime':'offset'}} <br>
+            Please allow 30 minutes for your food to arrive. <br>
+            If more than 30 minutes has passed, please ask wait staff to check for you. 
+            
         </div>
     
     </div>

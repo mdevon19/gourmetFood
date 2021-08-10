@@ -12,6 +12,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetOrderDetailsServiceService } from './get-order-details-service.service';
+import { WaiterComponentComponent } from './waiter-component/waiter-component.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GetOrderDetailsServiceService } from './get-order-details-service.servi
     HomeComponent,
     OrderComponent,
     CheckoutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WaiterComponentComponent
     
   ],
   imports: [

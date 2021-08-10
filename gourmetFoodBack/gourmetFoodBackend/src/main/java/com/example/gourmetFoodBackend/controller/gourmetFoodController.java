@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/GourmetFood")
-@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE})
 public class gourmetFoodController {
 
 
@@ -38,11 +38,6 @@ public class gourmetFoodController {
     @PostMapping(path= "/addOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addOrder(@RequestBody Order order) {
 
-        List<FoodItem> items = order.getItemsOrdered();
-        for(FoodItem item: items){
-            System.out.println(item.toString());
-        }
-        System.out.println(order.toString());
         orderService.addOrder(order);
         return new ResponseEntity("We all good", HttpStatus.OK);
     }
@@ -52,4 +47,17 @@ public class gourmetFoodController {
     public ResponseEntity getOrderCheck(@RequestParam int tableNumber){
         return new ResponseEntity(orderService.getOrderByTableNumber(tableNumber), HttpStatus.OK);
     }
+
+    @CrossOrigin
+    @GetMapping(path = "/allOrders")
+    public ResponseEntity getAllOrders(){
+        return new ResponseEntity(orderService.getAllOrders(), HttpStatus.OK);
+    }
+
+    @CrossOrigin
+    @DeleteMapping(path = "/clearTable")
+    public String clearTable(@RequestParam int tableNumber) {
+        return orderService.clearTable(tableNumber);
+    }
+
 }

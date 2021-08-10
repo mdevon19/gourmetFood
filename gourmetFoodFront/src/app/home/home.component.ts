@@ -23,13 +23,19 @@ export class HomeComponent implements OnInit {
   orderCheck: Order;
   timeOrderCheck: Date;
   timeElapsed;
+  offset;
 
 
   submittedOrder: boolean;
 
   ngOnInit(): void {
+    this.offset = new Date().getTimezoneOffset();
     window.scroll(0,0)
     this.CheckBoolValue();
+  }
+
+  goToWaiter() {
+    this.router.navigateByUrl('waiter');
   }
 
   goToOrder(): void{
@@ -52,7 +58,6 @@ export class HomeComponent implements OnInit {
   onSubmit(){
     this.getOrderDetailService.getOrderDetails(this.tableNumberForm.value.userTableNumber).subscribe(orderCheck => {this.orderCheck = orderCheck})
     
-    this.timeElapsed = this.calculateDiff(this.orderCheck.timePlaced);
   }
 
   calculateDiff(data){

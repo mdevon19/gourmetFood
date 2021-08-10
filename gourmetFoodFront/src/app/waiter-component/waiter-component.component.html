@@ -1,0 +1,10 @@
+<div *ngFor="let order of orders" >
+    <p>
+        {{order.tableNumber}}
+    </p>
+    <button (click)="removeOrder(order.tableNumber)">Remove Table</button>
+</div>
+<div *ngIf="response">
+    {{response}}
+
+</div>

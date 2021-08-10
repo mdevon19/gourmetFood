@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class OrderService {
@@ -23,5 +24,16 @@ public class OrderService {
 
     public Order getOrderByTableNumber(int tableNumber){
         return orderRepository.findByTableNumber(tableNumber);
+    }
+
+    public String clearTable(int tableNumber){
+
+        try{
+            orderRepository.delete(orderRepository.findByTableNumber(tableNumber));
+            return "Success!";
+        }catch(Exception e){
+            return e.getMessage();
+        }
+
     }
 }

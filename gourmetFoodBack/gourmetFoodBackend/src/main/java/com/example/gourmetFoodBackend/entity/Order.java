@@ -19,7 +19,7 @@ public class Order {
     LocalDateTime timePlaced;
 
     @Column(name = "itemsOrdered")
-    @OneToMany
+    @ManyToMany
     List<FoodItem> itemsOrdered;
 
     public int getTableNumber() {
